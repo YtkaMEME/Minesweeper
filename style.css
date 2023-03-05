@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Warp&family=Ubuntu:wght@500&display=swap');
+
+body{
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #3D3D3D;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    font-size: 40px;
+    color: white;
+}
+
+.menu{
+    width: 252px;
+    background-color: #979797;
+    display: flex;
+    border:  5px ridge #7B7B7B;
+    padding: 2px 2px;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn{
+    width: 26px;
+    height: 26px;
+}
+
+.timer{
+    height: 23px;
+    display: flex;
+    flex-direction:row;
+    margin-right: 5px;
+    margin-left: 70px;
+    
+}
+
+.bomb{
+    height: 23px;
+    display: flex;
+    flex-direction:row;
+    margin-right: 70px;
+    margin-left: 5px;
+}
+
+.pressedSmile{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -27px -24px;
+}
+
+.smile{
+    background-image: url(minesweeper-sprites.png);
+    background-position: 0px -24px;
+}
+
+.smileWow{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -54px -24px;
+}
+
+.number{
+    width: 13px;
+    height: 23px;
+    background-image: url(minesweeper-sprites.png);
+    background-position: -126px 0px;
+}
+
+.ground{
+    background-color: #979797;
+    flex-wrap: wrap;
+    border:  5px ridge #7B7B7B;
+    display: inline-grid;
+    grid-template-columns: repeat(16, 16px);
+    grid-template-rows: repeat(16, 16px);
+
+}
+
+.ground div{
+    width: 16px;
+    height: 16px;
+    background-color: white;
+}
+
+.hidden{
+    background-image: url(minesweeper-sprites.png);
+    background-position: 0px -51px;
+}
+
+.pressed{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -17px -51px;
+}
+
+.flag{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -34px -51px;
+}
+
+.question{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -51px -51px;
+}
+
+.questionPressed{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -68px -51px;
+}
+
+.bomb{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -85px -51px;
+    background-color: red;
+}
+
+.redBomb{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -102px -51px;
+}
+
+.ClearMine{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -119px -51px;
+}
+
+.one{
+    background-image: url(minesweeper-sprites.png);
+    background-position: 0px -68px;
+}
+
+.two{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -17px -68px;
+}
+
+.three{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -34px -68px;
+}
+
+.four{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -51px -68px;
+}
+
+.five{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -68px -68px;
+}
+
+.six{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -85px -68px;
+}
+
+.seven{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -102px -68px;
+}
+
+.eight{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -119px -68px;
+}

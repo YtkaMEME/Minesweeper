@@ -1,9 +1,12 @@
-import {CreatePlayground, Doflag, DoPressed, restartGame, DoOnmouseout, Win, Lose, BombInGame} from './logic.js';
+import {CreatePlayground, Doflag, DoPressed, restartGame, DoOnmouseout, Win, Lose, BombInGame, startTheGame, number} from './logic.js';
 
 const playground = CreatePlayground(16,30);
 const ground = document.querySelector('.ground');
 const smile = document.querySelector('.btn');
-let Bomb;
+
+let interval;
+let bol = false;
+let numb = 0;
 
 smile.addEventListener('click', () =>{
     restartGame(smile);
@@ -19,13 +22,63 @@ playground.forEach(row =>{
         })
         ground.append(title.square);
         title.square.addEventListener ('click', () => {
+
+            if (!bol){
+                MenuBomb(BombInGame(playground));
+                startTheGame(playground, title);
+                bol = true;
+                interval = setInterval(() => {
+                    numb++;
+                    if (numb === 1000){
+                        numb = 1;
+                    }
+                    let str = String(numb).split('')
+                    if (numb < 10){
+                        str.unshift('0');
+                        str.unshift('0');
+                    }else if (numb < 100){
+                        str.unshift('0');
+                    }
+                    const d = document.querySelector('.d');
+                    const e = document.querySelector('.e');
+                    const f = document.querySelector('.f'); 
+                    d.setAttribute('class', ('d ' + 'number' + number(Number(str[0]))));
+                    e.setAttribute('class', ('e ' + 'number' + number(Number(str[1]))));
+                    f.setAttribute('class', ('f ' + 'number' + number(Number(str[2]))));
+                } ,1000);
+            }
+            
             DoPressed(playground, title);
             GameEnd();
         })
         title.square.addEventListener ('contextmenu', fun => {
+            if (!bol){
+                startTheGame(playground);
+                MenuBomb(BombInGame(playground));
+                bol = true;
+                interval = setInterval(() => {
+                    numb++;
+                    if (numb === 1000){
+                        numb = 1;
+                    }
+                    let str = String(numb).split('')
+                    if (numb < 10){
+                        str.unshift('0');
+                        str.unshift('0');
+                    }else if (numb < 100){
+                        str.unshift('0');
+                    }
+                    const d = document.querySelector('.d');
+                    const e = document.querySelector('.e');
+                    const f = document.querySelector('.f'); 
+                    d.setAttribute('class', ('d ' + 'number' + number(Number(str[0]))));
+                    e.setAttribute('class', ('e ' + 'number' + number(Number(str[1]))));
+                    f.setAttribute('class', ('f ' + 'number' + number(Number(str[2]))));
+                } ,1000);
+            }
             fun.preventDefault();
             Doflag(title);
-            Bomb = BombInGame(playground);
+            MenuBomb(BombInGame(playground));
             GameEnd();
         });
     })
@@ -35,13 +88,13 @@ playground.forEach(row =>{
 function GameEnd(){
     const win = Win(playground);
     const lose = Lose(playground);
-
     if (win || lose){
         ground.addEventListener('click', StopProp,{capture: true} );
         ground.addEventListener('contextmenu', StopProp,{capture: true} );
     }
 
     if(win){
+        clearInterval(interval);
         smile.setAttribute('class', 'btn smileWin');
         playground.forEach(row => {
             row.forEach(title => {
@@ -52,6 +105,7 @@ function GameEnd(){
     }
 
     if(lose){
+        clearInterval(interval);
         smile.setAttribute('class', 'btn smileLose');
         playground.forEach(row => {
             row.forEach(title => {
@@ -65,3 +119,16 @@ function GameEnd(){
 function StopProp(t){
     t.stopPropagation();
 }
+
+function MenuBomb(numb){
+    
+    const a = document.querySelector('.a');
+    const b = document.querySelector('.b');
+    const c = document.querySelector('.c'); 
+    a.setAttribute('class', ('a ' + numb[0]));
+    b.setAttribute('class', ('b ' + numb[1]));
+    c.setAttribute('class', ('c ' + numb[2]));
+}
+
+
+

@@ -1,6 +1,6 @@
 
 let flag = false;
-
+let bol = true;
 export function CreatePlayground(width, bombsInAGame){
     const bombPosition = getBombPosition(width, bombsInAGame);
     const playground = [];
@@ -123,8 +123,10 @@ function nearby(playground, { x, y }) {
   return tiles;
 }
 
-function number(number){
+export function number(number){
     switch (number){
+        case 0:
+            return 'null';
         case 1:
             return 'one';
         case 2:
@@ -141,6 +143,8 @@ function number(number){
             return 'seven';
         case 8:
             return 'eight';
+        case 9:
+            return 'nine';
     }
 }
 
@@ -206,5 +210,30 @@ export function BombInGame(playground){
     }else{
         flag = false;
     }
-    return (30 - NoHidden);
+    let number = (30 - NoHidden);
+    return Tik(number);
+}
+
+function Tik(numb){
+    let Bomb = ['numbernull'];
+    Bomb.push('number' + number(Math.floor(numb/10)));
+    Bomb.push( 'number' + number(numb%10));
+    return Bomb;
+}
+
+
+
+export function startTheGame(playground, title){
+    if (title.bomb){
+        title.bomb = false;
+        playground.forEach(row =>{
+            row.forEach(title =>{
+                if (title.bomb === false && title.getClass()==='hidden' && bol){
+                    title.bomb = true;
+                    bol = false;
+                }
+            })
+        })
+    }
+    return ;
 }

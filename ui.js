@@ -52,6 +52,7 @@ playground.forEach(row =>{
             GameEnd();
         })
         title.square.addEventListener ('contextmenu', fun => {
+            fun.preventDefault();
             if (!bol){
                 startTheGame(playground);
                 MenuBomb(BombInGame(playground));
@@ -76,7 +77,6 @@ playground.forEach(row =>{
                     f.setAttribute('class', ('f ' + 'number' + number(Number(str[2]))));
                 } ,1000);
             }
-            fun.preventDefault();
             Doflag(title);
             MenuBomb(BombInGame(playground));
             GameEnd();

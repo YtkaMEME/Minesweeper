@@ -54,7 +54,6 @@ playground.forEach(row =>{
         title.square.addEventListener ('contextmenu', fun => {
             fun.preventDefault();
             if (!bol){
-                startTheGame(playground);
                 MenuBomb(BombInGame(playground));
                 bol = true;
                 interval = setInterval(() => {

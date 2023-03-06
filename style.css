@@ -45,6 +45,76 @@ h1{
     margin-left: 5px;
 }
 
+.numberNull{
+    width: 13px;
+    height: 23px;
+    background-position: -126px 0px;
+    background-image: url(minesweeper-sprites.png);
+}
+
+.numberone{
+    width: 13px;
+    height: 23px;
+    background-position: 0px 0px;
+    background-image: url(minesweeper-sprites.png);
+}
+
+.numbertwo{
+    width: 13px;
+    height: 23px;
+    background-position: -14px 0px;
+    background-image: url(minesweeper-sprites.png);
+}
+
+.numberthree{
+    width: 13px;
+    height: 23px;
+    background-position: -28px 0px;
+    background-image: url(minesweeper-sprites.png);
+}
+
+.numberfour{
+    width: 13px;
+    height: 23px;
+    background-position: -42px 0px;
+    background-image: url(minesweeper-sprites.png);
+}
+
+.numberfive{
+    width: 13px;
+    height: 23px;
+    background-position: -56px 0px;
+    background-image: url(minesweeper-sprites.png);
+}
+
+.numbersix{
+    width: 13px;
+    height: 23px;
+    background-position: -70px 0px;
+    background-image: url(minesweeper-sprites.png);
+}
+
+.numberseven{
+    width: 13px;
+    height: 23px;
+    background-position: -84px 0px;
+    background-image: url(minesweeper-sprites.png);
+}
+
+.numbereight{
+    width: 13px;
+    height: 23px;
+    background-position: -98px 0px;
+    background-image: url(minesweeper-sprites.png);
+}
+
+.numbernine{
+    width: 13px;
+    height: 23px;
+    background-position: -112px 0px;
+    background-image: url(minesweeper-sprites.png);
+}
+
 .pressedSmile{
     background-image: url(minesweeper-sprites.png);
     background-position: -27px -24px;
@@ -60,11 +130,14 @@ h1{
     background-position: -54px -24px;
 }
 
-.number{
-    width: 13px;
-    height: 23px;
+.smileWin{
     background-image: url(minesweeper-sprites.png);
-    background-position: -126px 0px;
+    background-position: -81px -24px;
+}
+
+.smileLose{
+    background-image: url(minesweeper-sprites.png);
+    background-position: -108px -24px;
 }
 
 .ground{
@@ -108,10 +181,9 @@ h1{
     background-position: -68px -51px;
 }
 
-.bomb{
+.mine{
     background-image: url(minesweeper-sprites.png);
     background-position: -85px -51px;
-    background-color: red;
 }
 
 .redBomb{
@@ -119,11 +191,13 @@ h1{
     background-position: -102px -51px;
 }
 
-.ClearMine{
+.ClearBomb{
     background-image: url(minesweeper-sprites.png);
     background-position: -119px -51px;
 }
-
+.number{
+    background-color: white;
+}
 .one{
     background-image: url(minesweeper-sprites.png);
     background-position: 0px -68px;

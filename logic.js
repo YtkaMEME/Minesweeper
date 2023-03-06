@@ -1,3 +1,6 @@
+
+let flag = false;
+
 export function CreatePlayground(width, bombsInAGame){
     const bombPosition = getBombPosition(width, bombsInAGame);
     const playground = [];
@@ -52,7 +55,7 @@ function randNum (width){
     return Math.floor (Math.random()*width)
 }
 
-export function Doflag(title){
+export function Doflag(title, flg = false){
     if (
         title.getClass() !== 'hidden' &&
         title.getClass() !== 'flag' &&
@@ -61,22 +64,40 @@ export function Doflag(title){
         return
       }
       if (title.getClass() === 'flag') {
-        title.setClass('question');
+        if (!flg){
+            title.setClass('question');
+        }else{
+            if(title.bomb){
+                title.setClass('ClearBomb');
+            }
+        }
       }else if (title.getClass() === 'question') {
-        title.setClass('hidden');
+        if (!flg){
+            title.setClass('hidden');
+        }else{
+            if(title.bomb){
+                title.setClass("mine");
+            }
+        }
       } else {
-        title.setClass('flag');
+        if (!flag){
+            title.setClass('flag');
+        }
       }
 }
 
-export function  DoPressed(playground, title){
+export function  DoPressed(playground, title, flg = false){
     if (
         title.getClass() !== 'hidden'
       ) {
         return;
     }
     if (title.bomb){
-        title.setClass('redBomb');
+        if (!flg){
+            title.setClass('redBomb');
+        }else{
+            title.setClass('mine');
+        }        
         return;
     }else{
         title.setClass('pressed'); 
@@ -85,7 +106,7 @@ export function  DoPressed(playground, title){
         if (bombs.length === 0) {
           adjacentTiles.forEach(DoPressed.bind(null, playground))
         } else {
-            title.setClass(number(bombs.length));  
+            title.setClass('number ' + number(bombs.length));  
         }
     }        
 }
@@ -134,10 +155,56 @@ export function restartGame(element){
 }
 
 export function DoOnmouseout(element){
+    if (
+        element.getAttribute('class') == 'btn smileWin'||
+        element.getAttribute('class') == 'btn smileLose'
+    )
+    {
+        return;
+    }
     if (element.getAttribute('class') !== 'btn smileWow')
     {
         element.setAttribute('class', 'btn smileWow');
     }else{
         element.setAttribute('class', 'btn smile');
     }
+}
+
+
+export function Win(playground){
+    let numb = 0;
+    playground.forEach(row => {
+        return row.forEach(title => {
+            if (title.getClass() === 'hidden' ||
+            title.getClass() === 'flag' || title.getClass() === 'question'){
+                numb++;
+            }
+            })
+        })
+    if(numb === 30){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+export function Lose(playground){
+    return playground.some(row => {
+        return row.some(tile => {
+          return tile.getClass() === 'redBomb';
+        })
+    })
+}
+
+export function BombInGame(playground){
+    const NoHidden = playground.reduce((count, row) =>{
+        return count + row.filter(title =>title.getClass() == 'flag').length + row.filter(title => title.getClass() == 'question').length
+    }, 0)
+    if (30 - NoHidden < 1){
+        flag = true;
+    }else{
+        flag = false;
+    }
+    return (30 - NoHidden);
 }

@@ -185,7 +185,7 @@ export function Win(playground){
             }
             })
         })
-    if(numb === 30){
+    if(numb === 40){
         return true;
     }
     else{
@@ -205,12 +205,12 @@ export function BombInGame(playground){
     const NoHidden = playground.reduce((count, row) =>{
         return count + row.filter(title =>title.getClass() == 'flag').length + row.filter(title => title.getClass() == 'question').length
     }, 0)
-    if (30 - NoHidden < 1){
+    if (40 - NoHidden < 1){
         flag = true;
     }else{
         flag = false;
     }
-    let number = (30 - NoHidden);
+    let number = (40 - NoHidden);
     return Tik(number);
 }
 

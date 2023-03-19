@@ -1,6 +1,6 @@
 import {CreatePlayground, Doflag, DoPressed, restartGame, DoOnmouseout, Win, Lose, BombInGame, startTheGame, number} from './logic.js';
 
-const playground = CreatePlayground(16,30);
+const playground = CreatePlayground(16,40);
 const ground = document.querySelector('.ground');
 const smile = document.querySelector('.btn');
 

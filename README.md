@@ -1,5 +1,5 @@
 # Minesweeper
-Minesweeper for VK
+Minesweeper
 
 Для запуска перейдите по ссылке
 
